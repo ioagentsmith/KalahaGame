@@ -17,6 +17,11 @@ import javax.validation.Valid;
 @Controller
 public class GameController {
 
+    private static final String KALAHA_GAME = "kalahaGame";
+    private static final String ROW_LENGTH = "rowLength";
+    private static final String TOTAL_PITS = "totalPits";
+    private static final String MESSAGE = "message";
+
     @Resource(name = "gameService")
     private GameService gameService;
 
@@ -30,11 +35,11 @@ public class GameController {
 
         kalahaGame = new Kalaha(players);
 
-        model.addAttribute("kalahaGame", kalahaGame);
-        model.addAttribute("rowLength", BoardEnum.PITS_PER_PLAYER.getValue());
-        model.addAttribute("totalPits", BoardEnum.TOTAL_PITS.getValue());
+        model.addAttribute(KALAHA_GAME, kalahaGame);
+        model.addAttribute(ROW_LENGTH, BoardEnum.PITS_PER_PLAYER.getValue());
+        model.addAttribute(TOTAL_PITS, BoardEnum.TOTAL_PITS.getValue());
 
-        return "kalahaGame";
+        return KALAHA_GAME;
     }
 
     @RequestMapping(value = "/makeMove.do", method = RequestMethod.GET)
@@ -42,12 +47,12 @@ public class GameController {
         int clickedPitId = Integer.valueOf(pitId).intValue();
         kalahaGame = gameService.startTheGame(clickedPitId, kalahaGame);
 
-        model.addAttribute("kalahaGame", kalahaGame);
-        model.addAttribute("rowLength", BoardEnum.PITS_PER_PLAYER.getValue());
-        model.addAttribute("totalPits", BoardEnum.TOTAL_PITS.getValue());
-        model.addAttribute("message", kalahaGame.getMessage());
+        model.addAttribute(KALAHA_GAME, kalahaGame);
+        model.addAttribute(ROW_LENGTH, BoardEnum.PITS_PER_PLAYER.getValue());
+        model.addAttribute(TOTAL_PITS, BoardEnum.TOTAL_PITS.getValue());
+        model.addAttribute(MESSAGE, kalahaGame.getMessage());
 
-        return "kalahaGame";
+        return KALAHA_GAME;
     }
 
 }

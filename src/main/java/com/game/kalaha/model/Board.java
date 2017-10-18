@@ -32,7 +32,7 @@ public class Board {
         return pits;
     }
 
-    public void setPits(Pit[] pits) {
+    public void setPits(final Pit[] pits) {
         this.pits = pits;
     }
 

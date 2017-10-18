@@ -17,7 +17,7 @@ public class Pit {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -25,7 +25,7 @@ public class Pit {
         return numberOfSeeds;
     }
 
-    public void setNumberOfSeeds(int numberOfSeeds) {
+    public void setNumberOfSeeds(final int numberOfSeeds) {
         this.numberOfSeeds = numberOfSeeds;
     }
 
@@ -33,7 +33,7 @@ public class Pit {
         return isEmpty;
     }
 
-    public void setEmpty(boolean isEmpty) {
+    public void setEmpty(final boolean isEmpty) {
         this.isEmpty = isEmpty;
     }
 
@@ -41,7 +41,7 @@ public class Pit {
         return isKalaha;
     }
 
-    public void setKalaha(boolean isKalaha) {
+    public void setKalaha(final boolean isKalaha) {
         this.isKalaha = isKalaha;
     }
 

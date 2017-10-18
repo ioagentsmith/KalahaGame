@@ -11,7 +11,7 @@ public class Player {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
+    public void setPlayerName(final String playerName) {
         this.playerName = playerName;
     }
 
@@ -19,7 +19,7 @@ public class Player {
         return playerNumber;
     }
 
-    public void setPlayerNumber(int playerNumber) {
+    public void setPlayerNumber(final int playerNumber) {
         this.playerNumber = playerNumber;
     }
 
@@ -27,7 +27,7 @@ public class Player {
         return consecutiveTurns;
     }
 
-    public void setConsecutiveTurns(int consecutiveTurns) {
+    public void setConsecutiveTurns(final int consecutiveTurns) {
         this.consecutiveTurns = consecutiveTurns;
     }
 
@@ -35,7 +35,7 @@ public class Player {
         return isActive;
     }
 
-    public void setActive(boolean isActive) {
+    public void setActive(final boolean isActive) {
         this.isActive = isActive;
     }
 

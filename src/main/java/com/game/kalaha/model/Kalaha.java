@@ -39,7 +39,7 @@ public class Kalaha {
         return player1;
     }
 
-    public void setPlayer1(Player player1) {
+    public void setPlayer1(final Player player1) {
         this.player1 = player1;
     }
 
@@ -47,7 +47,7 @@ public class Kalaha {
         return player2;
     }
 
-    public void setPlayer2(Player player2) {
+    public void setPlayer2(final Player player2) {
         this.player2 = player2;
     }
 
@@ -55,7 +55,7 @@ public class Kalaha {
         return board;
     }
 
-    public void setBoard(Board board) {
+    public void setBoard(final Board board) {
         this.board = board;
     }
 
@@ -67,7 +67,7 @@ public class Kalaha {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 }
