@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service("gameService")
 @Transactional
@@ -19,14 +21,14 @@ public class GameService {
 
     public Kalaha startTheGame(int clickedPitId, Kalaha game) {
         Board newBoard = game.getBoard();
-        int i = clickedPitId + 1;
+        int pitIndex = clickedPitId + 1;
         Pit clickedPit = game.getBoard().getPitById(clickedPitId);
         int seedsInClickedPit = clickedPit.getNumberOfSeeds();
         Pit[] pits = game.getBoard().getPits();
         pits[clickedPitId].setNumberOfSeeds(0);
         Player currentActivePlayer = game.getActivePlayer();
 
-        game = placeSeeds(game, i, seedsInClickedPit, pits, currentActivePlayer);
+        game = placeSeeds(game, pitIndex, seedsInClickedPit, pits, currentActivePlayer);
 
         updatePlayerTurns(currentActivePlayer);
 
@@ -46,12 +48,16 @@ public class GameService {
         }
     }
 
-    private Kalaha placeSeeds(Kalaha game, int i, int seedsInClickedPit, final Pit[] pits, final Player currentActivePlayer) {
-        while (i < BoardEnum.TOTAL_PITS.getValue() && seedsInClickedPit > 0) {
+    private Kalaha placeSeeds(Kalaha game, int pitIndex, int seedsInClickedPit, final Pit[] pits, final Player currentActivePlayer) {
+        while (pitIndex < BoardEnum.TOTAL_PITS.getValue() && seedsInClickedPit > 0) {
             if (seedsInClickedPit == 1) {
-                message = "Last seed in " + game.getActivePlayer().getPlayerName() + "'s own Kalaha. " + game.getActivePlayer().getPlayerName() + ", you are still the active player!";
-                if (isLastSeedInOwnEmptyPit(currentActivePlayer, pits[i])) {
-                    Pit oppositePit = getOppositePit(game, pits[i].getId());
+                message = String.format(
+                        "Last seed in %s's own Kalaha. %s, you are still the active player!",
+                        game.getActivePlayer().getPlayerName(),
+                        game.getActivePlayer().getPlayerName()
+                );
+                if (isLastSeedInOwnEmptyPit(currentActivePlayer, pits[pitIndex])) {
+                    Pit oppositePit = getOppositePit(game, pits[pitIndex].getId());
                     int numberOfSeedsToAdd = oppositePit.getNumberOfSeeds() + 1;
                     if (currentActivePlayer.getPlayerNumber() == 1) {
                         pits[BoardEnum.PITS_PER_PLAYER.getValue() - 1].setNumberOfSeeds(pits[BoardEnum.PITS_PER_PLAYER.getValue() - 1].getNumberOfSeeds() + numberOfSeedsToAdd);
@@ -59,10 +65,10 @@ public class GameService {
                         pits[BoardEnum.TOTAL_PITS.getValue() - 1].setNumberOfSeeds(pits[BoardEnum.TOTAL_PITS.getValue() - 1].getNumberOfSeeds() + numberOfSeedsToAdd);
                     }
                     pits[oppositePit.getId()].setNumberOfSeeds(0);
-                    pits[pits[i].getId()].setNumberOfSeeds(0);
+                    pits[pits[pitIndex].getId()].setNumberOfSeeds(0);
                     game = changeActivePlayer(game, currentActivePlayer);
                     break;
-                } else if (!isPlayerKalaha(currentActivePlayer, pits[i].getId())) {
+                } else if (!isPlayerKalaha(currentActivePlayer, pits[pitIndex].getId())) {
                     //end turn if last placed seed not in active player's kahala
                     game = changeActivePlayer(game, currentActivePlayer);
                 } else if (currentActivePlayer.getConsecutiveTurns() >= BoardEnum.MAX_TURNS_PER_PLAYER_ROUNDS.getValue()) {
@@ -71,22 +77,22 @@ public class GameService {
                 }
             }
 
-            seedsInClickedPit = updateRemainingSeedsToBePlaced(pits[i], seedsInClickedPit, !pits[i].isKalaha() || isPlayerKalaha(currentActivePlayer, pits[i].getId()));
+            seedsInClickedPit = updateRemainingSeedsToBePlaced(pits[pitIndex], seedsInClickedPit, !pits[pitIndex].isKalaha() || isPlayerKalaha(currentActivePlayer, pits[pitIndex].getId()));
 
-            i = incrementPitIdForSeedsToBePlaced(i, seedsInClickedPit);
+            pitIndex = incrementPitIdForSeedsToBePlaced(pitIndex, seedsInClickedPit);
         }
 
         return game;
     }
 
-    private int incrementPitIdForSeedsToBePlaced(int i, final int seedsInClickedPit) {
+    private int incrementPitIdForSeedsToBePlaced(int pitIndex, final int seedsInClickedPit) {
         //restart counter if end of board has been reached and players still needs to place seeds
-        if (i == BoardEnum.TOTAL_PITS.getValue() - 1 && seedsInClickedPit > 0) {
-            i = 0;
+        if (pitIndex == BoardEnum.TOTAL_PITS.getValue() - 1 && seedsInClickedPit > 0) {
+            pitIndex = 0;
         } else {
-            i++;
+            pitIndex++;
         }
-        return i;
+        return pitIndex;
     }
 
     private int updateRemainingSeedsToBePlaced(final Pit pit, int seedsInClickedPit, final boolean isPlayerKalaha) {
@@ -112,22 +118,21 @@ public class GameService {
         Pit player2Kalaha = pits[BoardEnum.TOTAL_PITS.getValue() - 1];
         int player1TotalNoOfSeeds = player1Kalaha.getNumberOfSeeds() + player1NoOfSeeds;
         int player2TotalNoOfSeeds = player2Kalaha.getNumberOfSeeds() + player2NoOfSeeds;
+        String playerWinsText = "GAME FINISHED!!! PLAYER 1 HAS %s SEEDS AND PLAYER 2 HAS %s SEEDS. %s WINS!!!";
         if (player1TotalNoOfSeeds > player2TotalNoOfSeeds) {
-            message = "GAME FINISHED!!! PLAYER 1 HAS "
-                    + player1TotalNoOfSeeds
-                    + " SEEDS AND PLAYER 2 HAS "
-                    + player2TotalNoOfSeeds
-                    + " SEEDS. "
-                    + game.getPlayer1().getPlayerName().toUpperCase()
-                    + "  WINS!!!";
+            message = String.format(
+                    playerWinsText,
+                    player1TotalNoOfSeeds,
+                    player2TotalNoOfSeeds,
+                    game.getPlayer1().getPlayerName().toUpperCase()
+            );
         } else if (player1TotalNoOfSeeds < player2TotalNoOfSeeds) {
-            message = "GAME FINISHED!!! PLAYER 1 HAS "
-                    + player1TotalNoOfSeeds
-                    + " SEEDS AND PLAYER 2 HAS "
-                    + player2TotalNoOfSeeds
-                    + " SEEDS. "
-                    + game.getPlayer2().getPlayerName().toUpperCase()
-                    + "  WINS!!!";
+            message = String.format(
+                    playerWinsText,
+                    player1TotalNoOfSeeds,
+                    player2TotalNoOfSeeds,
+                    game.getPlayer2().getPlayerName().toUpperCase()
+            );
         } else {
             message = "GAME FINISHED!!! IT'S A DRAW!!!";
         }
@@ -152,7 +157,7 @@ public class GameService {
         game.getPlayer1().setConsecutiveTurns(1);
         game.getPlayer2().setConsecutiveTurns(1);
 
-        message = game.getActivePlayer().getPlayerName() + ", it is now your turn.";
+        message = String.format("%s, it is now your turn.", game.getActivePlayer().getPlayerName());
         game.setMessage(message);
 
         return game;
@@ -172,12 +177,15 @@ public class GameService {
     }
 
     public int getNumberOfSeedsForPlayer(Board board, Player player) {
-        List<Pit> pitsForPlayer = getPlayerPits(board, player);
+        /*List<Pit> pitsForPlayer = getPlayerPits(board, player);
         int numberOfSeedsForPlayer = 0;
-
         for (Pit pit : pitsForPlayer) {
             numberOfSeedsForPlayer += pit.getNumberOfSeeds();
         }
+        return numberOfSeedsForPlayer;*/
+
+        List<Pit> pitsForPlayer = getPlayerPits(board, player);
+        int numberOfSeedsForPlayer = pitsForPlayer.stream().mapToInt(Pit::getNumberOfSeeds).sum();
 
         return numberOfSeedsForPlayer;
     }
@@ -190,10 +198,12 @@ public class GameService {
             for (int i = 0; i < BoardEnum.PITS_PER_PLAYER.getValue() - 2; i++) {
                 pits.add(allPits[i]);
             }
+            //pits = IntStream.range(0, BoardEnum.PITS_PER_PLAYER.getValue() - 2).mapToObj(i -> allPits[i]).collect(Collectors.toList());
         } else {
             for (int i = BoardEnum.PITS_PER_PLAYER.getValue(); i < BoardEnum.TOTAL_PITS.getValue() - 1; i++) {
                 pits.add(allPits[i]);
             }
+            //pits = IntStream.range(BoardEnum.PITS_PER_PLAYER.getValue(), BoardEnum.TOTAL_PITS.getValue() - 1).mapToObj(i -> allPits[i]).collect(Collectors.toList());
         }
         return pits;
     }

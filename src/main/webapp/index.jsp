@@ -6,11 +6,11 @@
 
 <html>
 <head>
-    <title>Start Kalaha</title>
-
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/resources/css/general.css" />"/>
+
+    <title>Start Kalaha</title>
 </head>
 <body bgcolor=white>
 

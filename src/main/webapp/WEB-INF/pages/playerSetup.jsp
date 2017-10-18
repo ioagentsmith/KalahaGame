@@ -6,15 +6,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Player Setup</title>
-
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/resources/css/general.css" />"/>
+
+    <title>Player Setup</title>
 </head>
 <body>
 <div class="fullPageCenter">
-    <h3 class="title">Welcome, Enter The Player Names</h3>
+    <h3 class="title">Welcome! Please Enter The Player Names</h3>
     <form:form method="POST" action="/startGame.do" modelAttribute="playerNames">
         <table class="table">
             <tr>

@@ -2,6 +2,8 @@ package com.game.kalaha.model;
 
 import com.game.kalaha.util.BoardEnum;
 
+import java.util.stream.IntStream;
+
 public class Board {
 
     private Pit[] pits;
@@ -9,23 +11,21 @@ public class Board {
     public Board() {
         this.pits = new Pit[BoardEnum.TOTAL_PITS.getValue()];
 
-        for (int i = 0; i < BoardEnum.TOTAL_PITS.getValue(); i++) {
+        IntStream.range(0, BoardEnum.TOTAL_PITS.getValue()).forEach(i -> {
             Pit pit = new Pit();
             pits[i] = pit;
             pits[i].setId(i);
-
             if (((i + 1) % BoardEnum.PITS_PER_PLAYER.getValue()) == 0) {
                 pits[i].setKalaha(true);
             } else {
                 pits[i].setKalaha(false);
             }
-
             if (!pits[i].isKalaha()) {
                 pits[i].setNumberOfSeeds(BoardEnum.SEEDS_PER_PIT.getValue());
             } else {
                 pits[i].setNumberOfSeeds(0);
             }
-        }
+        });
     }
 
     public Pit[] getPits() {

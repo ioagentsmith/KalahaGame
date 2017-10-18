@@ -4,7 +4,7 @@ public final class StringUtil {
     private StringUtil() {
     }
 
-    public static boolean isNullOrEmpty(final String text) {
+    public static boolean isNullOrEmpty(String text) {
         if (text == null || text.isEmpty()) {
             return true;
         }
