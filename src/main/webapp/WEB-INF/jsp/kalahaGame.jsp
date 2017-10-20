@@ -8,7 +8,6 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <%--<link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/css/kalaha.css" />"/>--%>
     <link rel="stylesheet" href="/css/kalaha.css">
 
     <meta charset="utf-8">

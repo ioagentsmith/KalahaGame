@@ -9,7 +9,6 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <%--<link rel="stylesheet" type="text/css" media="screen" href="<c:url value="/static/css/general.css" />"/>--%>
     <link rel="stylesheet" href="/css/general.css">
 
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
