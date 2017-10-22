@@ -1,1 +1,1 @@
-This game of Kalaha runs using Spring Boot.
+This game of Kalaha runs using Spring Boot 1.5.8.

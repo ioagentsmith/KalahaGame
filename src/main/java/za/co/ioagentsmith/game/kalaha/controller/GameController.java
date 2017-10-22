@@ -1,15 +1,17 @@
 package za.co.ioagentsmith.game.kalaha.controller;
 
-import za.co.ioagentsmith.game.kalaha.model.PlayerNames;
-import za.co.ioagentsmith.game.kalaha.service.GameService;
-import za.co.ioagentsmith.game.kalaha.util.BoardEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import za.co.ioagentsmith.game.kalaha.model.Kalaha;
+import za.co.ioagentsmith.game.kalaha.model.PlayerNames;
+import za.co.ioagentsmith.game.kalaha.service.GameService;
+import za.co.ioagentsmith.game.kalaha.util.BoardEnum;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -17,6 +19,7 @@ import javax.validation.Valid;
 @Controller
 public class GameController {
 
+    private static final String ERROR_PATH = "/error";
     private static final String KALAHA_GAME = "kalahaGame";
     private static final String ROW_LENGTH = "rowLength";
     private static final String TOTAL_PITS = "totalPits";
@@ -30,7 +33,7 @@ public class GameController {
     @RequestMapping(value = "/startGame.do", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("players") PlayerNames players, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "error";
+            return ERROR_PATH;
         }
 
         kalahaGame = new Kalaha(players);
@@ -54,5 +57,4 @@ public class GameController {
 
         return KALAHA_GAME;
     }
-
 }
