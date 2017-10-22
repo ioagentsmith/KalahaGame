@@ -1,4 +1,4 @@
-package za.co.ioagentsmith.game.kalaha.service;
+package za.co.ioagentsmith.game.kalaha;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
