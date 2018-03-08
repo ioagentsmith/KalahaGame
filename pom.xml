@@ -12,7 +12,7 @@
 
     <properties>
         <standard.version>1.1.2</standard.version>
-        <junit.version>4.12</junit.version>
+        <junit-platform.version>5.1.0</junit-platform.version>
         <mockito-all.version>1.9.5</mockito-all.version>
     </properties>
 
@@ -59,10 +59,24 @@
         </dependency>
 
         <!-- Test -->
+
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- To avoid compiler warnings about @API annotations in JUnit code -->
+        <dependency>
+            <groupId>org.apiguardian</groupId>
+            <artifactId>apiguardian-api</artifactId>
+            <version>1.0.0</version>
             <scope>test</scope>
         </dependency>
 
