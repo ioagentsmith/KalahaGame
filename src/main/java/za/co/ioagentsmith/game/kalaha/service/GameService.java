@@ -168,6 +168,13 @@ public class GameService {
     }
 
     int getNumberOfSeedsForPlayer(final Board board, final Player player) {
+//      List<Pit> pitsForPlayer = getPlayerPits(board, player);
+//      int numberOfSeedsForPlayer = 0;
+//      for (Pit pit : pitsForPlayer) {
+//          numberOfSeedsForPlayer += pit.getNumberOfSeeds();
+//      }
+//      return numberOfSeedsForPlayer;
+
         List<Pit> pitsForPlayer = getPlayerPits(board, player);
         return pitsForPlayer.stream().mapToInt(Pit::getNumberOfSeeds).sum();
     }
@@ -177,8 +184,16 @@ public class GameService {
         List<Pit> pits;
 
         if (player.getPlayerNumber() == 1) {
+//          for (int i = 0; i < BoardEnum.PITS_PER_PLAYER.getValue() - 2; i++) {
+//              pits.add(allPits[i]);
+//          }
+
             pits = IntStream.range(0, BoardEnum.PITS_PER_PLAYER.getValue() - 2).mapToObj(i -> allPits[i]).collect(Collectors.toList());
         } else {
+//          for (int i = BoardEnum.PITS_PER_PLAYER.getValue(); i < BoardEnum.TOTAL_PITS.getValue() - 1; i++) {
+//              pits.add(allPits[i]);
+//          }
+
             pits = IntStream.range(BoardEnum.PITS_PER_PLAYER.getValue(), BoardEnum.TOTAL_PITS.getValue() - 1).mapToObj(i -> allPits[i]).collect(Collectors.toList());
         }
         return pits;
