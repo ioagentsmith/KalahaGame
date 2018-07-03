@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-public class KalahaGameWebJspApplicationTests {
+public class KalahaJavaGameWebJspApplicationTests {
 
 	@Autowired
 	private TestRestTemplate restTemplate;

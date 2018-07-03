@@ -1,0 +1,9 @@
+server:
+  port: 8090
+#  servlet:
+#    context-path: /kalaha/kotlin
+spring:
+  mvc:
+    view:
+        prefix: /WEB-INF/jsp/
+        suffix: .jsp
