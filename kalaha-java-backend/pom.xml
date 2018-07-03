@@ -11,7 +11,6 @@
     <artifactId>kalaha-java-backend</artifactId>
 
     <properties>
-        <standard.version>1.1.2</standard.version>
         <junit-platform.version>5.2.0</junit-platform.version>
         <mockito-all.version>1.10.19</mockito-all.version>
     </properties>
@@ -21,41 +20,13 @@
         <dependency>
             <groupId>za.co.ioagentsmith</groupId>
             <artifactId>kalaha-frontend</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <!-- JSTL tag lib -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>${standard.version}</version>
-        </dependency>
-
-        <!-- Tomcat for JSP rendering -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
 
         <!-- Test -->
