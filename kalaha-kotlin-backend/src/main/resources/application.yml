@@ -1,7 +1,7 @@
 server:
   port: 8090
-#  servlet:
-#    context-path: /kalaha/kotlin
+  servlet:
+    context-path: /kalaha/kotlin
 spring:
   mvc:
     view:

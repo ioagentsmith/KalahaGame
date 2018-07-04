@@ -8,7 +8,7 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/kalaha.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kalaha.css">
 
     <meta charset="utf-8">
     <title>Kalaha</title>
@@ -45,7 +45,7 @@
                     </td>
                     <c:forEach var="i" begin="1" end="${rowLength - 1}" step="1" varStatus="status">
                         <td>
-                            <a href="/makeMove.do?pitId=${kalahaGame.board.pits[totalPits - 1 - i].id}">${kalahaGame.board.pits[totalPits - 1 - i].numberOfSeeds}</a>
+                            <a href="${pageContext.request.contextPath}/makeMove.do?pitId=${kalahaGame.board.pits[totalPits - 1 - i].id}">${kalahaGame.board.pits[totalPits - 1 - i].numberOfSeeds}</a>
                         </td>
                     </c:forEach>
                     <td rowspan="2">
@@ -72,7 +72,7 @@
                 <c:when test="${kalahaGame.player1.active}">
                     <c:forEach var="i" begin="0" end="${rowLength - 2}" step="1" varStatus="status">
                         <td>
-                            <a href="/makeMove.do?pitId=${kalahaGame.board.pits[i].id}">${kalahaGame.board.pits[i].numberOfSeeds}</a>
+                            <a href="${pageContext.request.contextPath}/makeMove.do?pitId=${kalahaGame.board.pits[i].id}">${kalahaGame.board.pits[i].numberOfSeeds}</a>
                         </td>
                     </c:forEach>
                 </c:when>
@@ -92,7 +92,7 @@
     <br>
 
     <h2>
-        <a href="/">Go back to start</a>
+        <a href="${pageContext.request.contextPath}/">Go back to start</a>
     </h2>
 
 </div>

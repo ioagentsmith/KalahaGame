@@ -9,7 +9,7 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
 
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Invalid Player Names</title>
@@ -20,7 +20,7 @@
     <h3>Please enter player names with a minimum length of 2 characters</h3>
     <table>
         <tr>
-            <td><a href="/playerSetup.do">Retry</a></td>
+            <td><a href="${pageContext.request.contextPath}/playerSetup.do">Retry</a></td>
         </tr>
     </table>
 </div>

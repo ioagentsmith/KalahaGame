@@ -8,7 +8,7 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
 
     <title>Start Kalaha</title>
 </head>
@@ -16,7 +16,7 @@
 
 <div class="fullPageCenter">
     <h1>
-        <a href="/playerSetup.do">Start Kalaha game setup</a>
+        <a href="${pageContext.request.contextPath}/playerSetup.do">Start Kalaha game setup</a>
     </h1>
 </div>
 

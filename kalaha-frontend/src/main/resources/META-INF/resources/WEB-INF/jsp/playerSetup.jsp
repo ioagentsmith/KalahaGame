@@ -8,14 +8,14 @@
 <head>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css">
 
     <title>Player Setup</title>
 </head>
 <body>
 <div class="fullPageCenter">
     <h3 class="title">Welcome! Please Enter The Player Names</h3>
-    <form:form method="POST" action="/startGame.do" modelAttribute="playerNames">
+    <form:form method="POST" action="${pageContext.request.contextPath}/startGame.do" modelAttribute="playerNames">
         <table class="table">
             <tr>
                 <td><form:label path="player1Name">First player's name</form:label></td>

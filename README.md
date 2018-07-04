@@ -17,9 +17,9 @@ You can start the Kotlin version by running below command in command prompt from
 Running the game in the browser:
 ================================
 
-The Java game can be accessed from [http://localhost:8080](http://localhost:8080)
+The Java game can be accessed from [http://localhost:8080/kalaha/java](http://localhost:8080/kalaha/java)
 
-The Kotlin game can be accessed from [http://localhost:8090](http://localhost:8090)
+The Kotlin game can be accessed from [http://localhost:8090/kalaha/kotlin](http://localhost:8090/kalaha/kotlin)
 
 Talk slides:
 ============
