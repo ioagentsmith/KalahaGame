@@ -6,15 +6,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class KalahaJavaGameWebJspApplication extends SpringBootServletInitializer {
+public class KalahaJavaGameWebApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(KalahaJavaGameWebJspApplication.class);
+        return application.sources(KalahaJavaGameWebApplication.class);
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(KalahaJavaGameWebJspApplication.class, args);
+        SpringApplication.run(KalahaJavaGameWebApplication.class, args);
     }
 
 }

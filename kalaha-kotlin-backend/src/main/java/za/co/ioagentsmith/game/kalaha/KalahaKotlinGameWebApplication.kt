@@ -6,10 +6,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
-open class KalahaKotlinGameWebJspApplication : SpringBootServletInitializer() {
+open class KalahaKotlinGameWebApplication : SpringBootServletInitializer() {
 
     override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder {
-        return application.sources(KalahaKotlinGameWebJspApplication::class.java)
+        return application.sources(KalahaKotlinGameWebApplication::class.java)
     }
 
     companion object {
@@ -17,7 +17,7 @@ open class KalahaKotlinGameWebJspApplication : SpringBootServletInitializer() {
         @Throws(Exception::class)
         @JvmStatic
         fun main(args: Array<String>) {
-            SpringApplication.run(KalahaKotlinGameWebJspApplication::class.java, *args)
+            SpringApplication.run(KalahaKotlinGameWebApplication::class.java, *args)
         }
     }
 
