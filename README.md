@@ -1,7 +1,7 @@
 Kalaha game description:
 ========================
 
-This game of Kalaha runs using Spring Boot 2.0.3 and either Java 9 or Kotlin 1.2.50
+This game of Kalaha runs using Spring Boot 3.1.0 and either Java 17 or Kotlin 1.8.0
 
 Starting the game:
 ==================

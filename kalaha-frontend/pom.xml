@@ -3,7 +3,7 @@
     <parent>
         <groupId>za.co.ioagentsmith</groupId>
         <artifactId>kalaha</artifactId>
-        <version>3.0.1</version>
+        <version>4.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
@@ -11,7 +11,8 @@
     <artifactId>kalaha-frontend</artifactId>
 
     <properties>
-        <standard.version>1.1.2</standard.version>
+        <jstl-api.version>3.0.0</jstl-api.version>
+        <jstl.version>3.0.1</jstl.version>
     </properties>
 
     <dependencies>
@@ -22,14 +23,14 @@
 
         <!-- JSTL tag lib -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jstl-api.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>${standard.version}</version>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
 
         <!-- Tomcat for JSP rendering -->

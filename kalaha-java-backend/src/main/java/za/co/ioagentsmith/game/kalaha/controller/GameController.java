@@ -13,8 +13,8 @@ import za.co.ioagentsmith.game.kalaha.model.PlayerNames;
 import za.co.ioagentsmith.game.kalaha.service.GameService;
 import za.co.ioagentsmith.game.kalaha.util.BoardEnum;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 
 @Controller
 public class GameController {

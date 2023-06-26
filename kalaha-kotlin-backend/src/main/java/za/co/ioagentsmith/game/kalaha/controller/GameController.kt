@@ -13,8 +13,8 @@ import za.co.ioagentsmith.game.kalaha.model.PlayerNames
 import za.co.ioagentsmith.game.kalaha.service.GameService
 import za.co.ioagentsmith.game.kalaha.util.BoardEnum
 
-import javax.annotation.Resource
-import javax.validation.Valid
+import jakarta.annotation.Resource
+import jakarta.validation.Valid
 
 @Controller
 class GameController {
@@ -24,7 +24,7 @@ class GameController {
 
     internal lateinit var kalahaGame: Kalaha
 
-    @RequestMapping(value = "/startGame.do", method = arrayOf(RequestMethod.POST))
+    @RequestMapping(value = ["/startGame.do"], method = [RequestMethod.POST])
     fun submit(@Valid @ModelAttribute("players") players: PlayerNames, result: BindingResult, model: ModelMap): String {
         if (result.hasErrors()) {
             return ERROR_PATH
@@ -39,7 +39,7 @@ class GameController {
         return KALAHA_GAME
     }
 
-    @RequestMapping(value = "/makeMove.do", method = arrayOf(RequestMethod.GET))
+    @RequestMapping(value = ["/makeMove.do"], method = [RequestMethod.GET])
     fun move(@RequestParam pitId: String, model: Model): String {
         val clickedPitId = Integer.valueOf(pitId).toInt()
         kalahaGame = gameService!!.startTheGame(clickedPitId, kalahaGame)

@@ -1,16 +1,20 @@
 package za.co.ioagentsmith.game.kalaha.service;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 import za.co.ioagentsmith.game.kalaha.model.Board;
 import za.co.ioagentsmith.game.kalaha.model.Kalaha;
 import za.co.ioagentsmith.game.kalaha.model.Pit;
 import za.co.ioagentsmith.game.kalaha.model.Player;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(SpringExtension.class)
 public class GameServiceTest {
 
     private static GameService testedObject;
@@ -20,7 +24,7 @@ public class GameServiceTest {
     private static Board board;
     private static Kalaha game;
 
-    @BeforeClass
+    @BeforeAll
     public static void testSetup() {
         testedObject = new GameService();
         player1 = Mockito.mock(Player.class);

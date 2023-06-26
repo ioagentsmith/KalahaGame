@@ -114,20 +114,20 @@ class GameService {
         if (player1TotalNoOfSeeds > player2TotalNoOfSeeds) {
             message = String.format(
                     playerWinsText,
-                    game.player1!!.playerName!!.toUpperCase(),
+                    game.player1!!.playerName!!.uppercase(),
                     player1TotalNoOfSeeds,
-                    game.player2!!.playerName!!.toUpperCase(),
+                    game.player2!!.playerName!!.uppercase(),
                     player2TotalNoOfSeeds,
-                    game.player1!!.playerName!!.toUpperCase()
+                    game.player1!!.playerName!!.uppercase()
             )
         } else if (player1TotalNoOfSeeds < player2TotalNoOfSeeds) {
             message = String.format(
                     playerWinsText,
-                    game.player1!!.playerName!!.toUpperCase(),
+                    game.player1!!.playerName!!.uppercase(),
                     player1TotalNoOfSeeds,
-                    game.player2!!.playerName!!.toUpperCase(),
+                    game.player2!!.playerName!!.uppercase(),
                     player2TotalNoOfSeeds,
-                    game.player2!!.playerName!!.toUpperCase()
+                    game.player2!!.playerName!!.uppercase()
             )
         } else {
             message = "GAME FINISHED!!! IT'S A DRAW!!!"
@@ -177,7 +177,7 @@ class GameService {
 //      return numberOfSeedsForPlayer
 
         val pitsForPlayer = getPlayerPits(board, player)
-        return pitsForPlayer.sumBy { it.numberOfSeeds }
+        return pitsForPlayer.sumOf { it.numberOfSeeds }
     }
 
     fun getPlayerPits(board: Board, player: Player?): List<Pit> {
